@@ -1,0 +1,20 @@
+<% provide(:title, 'Creation Anecdote') %>
+<h1>Creation Anecdote</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @anecdote, as: :anecdote, url: createanecdote_path(@chapitre.id) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :sujet %>
+	<%= f.text_field :sujet %>
+        
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+        
+        <%= f.label :themes %>
+	<%= f.text_area :themes %>
+ 
+	<%= f.submit "Ajouter Anecdote", class: "btn btn-large btn-primary" %>
+     <% end %>
+   </div>
+</div>

@@ -1,0 +1,16 @@
+<% provide(:title, @personne.name) %>
+
+<div class="row">
+  <section>
+    <h1><%= @personne.name %></h1>
+  <section>
+     <h2> Scenes d'appartition : </h2>
+  <section>
+        <% @scenes.each do |scene| %>
+        <section>
+          <% scene = Scene.find(scene.scene_id) %>
+          <%= link_to scene.title, scene_path(scene) %>
+        <section>
+        <% end %>
+</div>
+<%= link_to "Editer personne", editpersonne_path(@personne) %>

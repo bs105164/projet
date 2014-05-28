@@ -1,0 +1,27 @@
+<% provide(:title, @chapitre.name) %>
+<div class="row">
+  <section>
+    <h1><%= @chapitre.name %></h1>
+  <section>
+  <div class="span8">
+    <h3>Scenes (<%= @chapitre.scenes.count %>)</h3>
+    <% if @chapitre.scenes.any? %>  
+      <ol class="scenes">
+        <%= render @scenes %>
+      </ol>
+      <%= will_paginate @scenes %>
+    <% end %>
+  </div>
+  <div class="span8">
+    <h3>Anecdotes (<%= @chapitre.scenes.count %>)</h3>
+    <% if @chapitre.anecdotes.any? %>  
+      <ol class="anecdotes">
+        <%= render @anecdotes %>
+      </ol>
+      <%= will_paginate @anecdotes %>
+    <% end %>
+  </div>
+</div>
+<%= link_to "Nouvelle Scene", newscene_path(@chapitre) %>
+<%= link_to "Nouvelle Anecdote", newanecdote_path(@chapitre) %>
+<%= link_to "Editer chapitre", editchapter_path(@chapitre) %>

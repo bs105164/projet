@@ -1,0 +1,5 @@
+<%= form_for(@scene.relationships.find_by(personne_id: personne.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "Enlever", class: "btn btn-large" %>
+<% end %>
+

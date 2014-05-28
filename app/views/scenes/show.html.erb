@@ -1,0 +1,50 @@
+<% provide(:title, @scene.title) %>
+<div class="row">
+  <section>
+    <h1><%= @scene.title %></h1>
+  <section>
+  <section>
+    <p>
+       Periode : <%= @scene.periode %>
+    </p>
+  <section>
+  <section>
+    <p><%= @scene.content %></p>
+  <section>
+  <section>
+  <h3> Personnage (<%= @scene.personnes.count %>) </h3>
+  <ul class="personne">
+  <% Personne.all.each do |personne| %>
+	<li>
+   <%= link_to personne.name, personne_path(personne) %>
+   <span class="timestamp"> 
+     Posted <%= time_ago_in_words(personne.created_at) %> ago.
+   </span>
+   <%= link_to "Supprimer", personne, method: :delete,
+                                     data: { confirm: "Etes vous sure?" },
+                                     title: personne.name %>
+   <% if @scene.appartient?(personne) %>
+       <%= form_for(@scene.relationships.find_by(personne_id: personne.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "Enlever", class: "btn btn-large" %>
+<% end %>
+
+   <% else %>
+       <%= form_for(@scene.relationships.build(personne_id: personne.id, scene_id: @scene.id)) do |f| %>
+  <div><%= f.hidden_field :personne_id %></div>
+   <div><%= f.hidden_field :scene_id %></div>
+  <%= f.submit "Ajouter", class: "btn btn-large btn-primary" %>
+<% end %>
+   <% end %>
+</li>
+  <% end %>
+  </ul>
+  <section>
+  <section>
+    <%= link_to "Editer", editscene_path(@scene) %>
+    <%= link_to "Supprimer Scene", @scene, method: :delete,
+                                  data: { confirm: "Etes vous sure?" },
+                                   title: @scene.title %>
+  <section>
+</div>
+

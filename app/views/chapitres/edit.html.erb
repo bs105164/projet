@@ -1,0 +1,14 @@
+<% provide(:title, 'Edition Chapitre') %>
+<h1>Edition Chapitre</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@chapitre) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.submit "Modifier Chapitre", class: "btn btn-large btn-primary" %>
+     <% end %>
+   </div>
+</div>

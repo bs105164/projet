@@ -1,0 +1,16 @@
+<li>
+   <%= link_to anecdote.sujet, anecdote %>
+   <span class="themes"> 
+     Theme(s) : <%= anecdote.themes %>
+   </span>
+   <span class="sujet"> 
+     Sujet : <%= anecdote.sujet %>
+   </span>
+   <span class="timestamp"> 
+     Posted <%= time_ago_in_words(anecdote.created_at) %> ago.
+   </span>
+   <%= link_to "Supprimer", anecdote, method: :delete,
+                                     data: { confirm: "Etes vous sure?" },
+                                     title: anecdote.sujet %>
+</li>
+

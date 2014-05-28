@@ -1,0 +1,14 @@
+<li>
+   <%= link_to personne.name, anecdote %>
+   <span class="timestamp"> 
+     Posted <%= time_ago_in_words(personne.created_at) %> ago.
+   </span>
+   <%= link_to "Supprimer", anecdote, method: :delete,
+                                     data: { confirm: "Etes vous sure?" },
+                                     title: personne.sujet %>
+   <%= if @scene.appartient?(personne) %>
+       <%= render 'desappartient' %>
+   <% else %>
+       <%= render 'appartient' %>
+   <% end %>
+</li>

@@ -1,0 +1,4 @@
+<%= form_for(@scene.relationships.build(personne_id: personne.id)) do |f| %>
+  <div><%= f.hidden_field :personne_id %></div>
+  <%= f.submit "Ajouter", class: "btn btn-large btn-primary" %>
+<% end %>

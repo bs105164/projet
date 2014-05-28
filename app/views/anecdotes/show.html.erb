@@ -1,0 +1,25 @@
+<% provide(:title, @anecdote.sujet) %>
+<div class="row">
+  <section>
+    <h1><%= @anecdote.sujet %></h1>
+  <section>
+  <section>
+    <p>
+       Themes : <%= @anecdote.themes %>
+    </p>
+  <section>
+  <section>
+    <p>
+       Sujet : <%= @anecdote.sujet %>
+    </p>
+  <section>
+  <section>
+    <p><%= @anecdote.content %></p>
+  <section>
+  <section>
+    <%= link_to "Editer", editanecdote_path(@anecdote) %>
+    <%= link_to "Supprimer", @anecdote, method: :delete,
+                                  data: { confirm: "Etes vous sure?" },
+                                   title: @anecdote.sujet %>
+  <section>
+</div>

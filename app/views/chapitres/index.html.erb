@@ -1,0 +1,20 @@
+<% provide(:title, 'Chapitres') %>
+<h1>Chapitres</h1>
+
+<%= will_paginate %>
+
+<ul class="chapitres">
+  <% @chapitres.each do |chapitre| %>
+     <li>
+       <%= link_to chapitre.name, chapitre_path(chapitre) %>
+       <%= link_to 'editer', editchapter_path(chapitre) %>
+        <%= link_to "supprimer", chapitre, method: :delete,
+                                  data: { confirm: "Etes vous sure ?" } %>
+     </li>
+  <% end %>
+     <li>
+        <%= link_to 'Nouveau', newchapter_path %>
+     </li>
+</ul>
+
+<%= will_paginate %>

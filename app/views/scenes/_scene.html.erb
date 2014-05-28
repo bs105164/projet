@@ -1,0 +1,13 @@
+<li>
+   <%= link_to scene.title, scene %>
+   <span class="periode"> 
+     Periode : <%= scene.periode %>
+   </span>
+   <span class="timestamp"> 
+     Posted <%= time_ago_in_words(scene.created_at) %> ago.
+   </span>
+   <%= link_to "Supprimer", scene, method: :delete,
+                                     data: { confirm: "Etes vous sure?" },
+                                     title: scene.title %>
+</li>
+

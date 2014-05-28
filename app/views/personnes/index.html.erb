@@ -1,0 +1,20 @@
+<% provide(:title, 'Personnages') %>
+<h1>Personnages</h1>
+
+<%= will_paginate %>
+
+<ul class="personnes">
+  <% @personnes.each do |personne| %>
+     <li>
+       <%= link_to personne.name, personne_path(personne) %>
+       <%= link_to 'editer', editpersonne_path(personne) %>
+        <%= link_to "supprimer", personne, method: :delete,
+                                  data: { confirm: "Etes vous sure ?" } %>
+     </li>
+  <% end %>
+     <li>
+        <%= link_to 'Nouveau', newpersonne_path %>
+     </li>
+</ul>
+
+<%= will_paginate %>
